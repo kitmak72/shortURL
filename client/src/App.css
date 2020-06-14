@@ -1,0 +1,54 @@
+body {
+  height: 100%;
+}
+
+.nav-options {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.url-input-form {
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.url-input-form label {
+  font-size: 1.5rem;
+}
+
+.url-input-form .result {
+  display: flex;
+  margin-top: 10px;
+  background-color: rgba(230, 230, 230, 0.2);
+}
+
+.url-input-form .result button {
+  margin-left: auto;
+}
+
+.url-input-form .result {
+  border: rgb(211, 211, 211) 2px solid;
+  border-radius: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+.url-input-form .result span {
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+#url_ending {
+  width: 30%;
+  margin-top: 20px;
+  margin-left: auto;
+}
+
+.form-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

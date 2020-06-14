@@ -1,0 +1,38 @@
+{
+  "name": "comp4021_url_shortener",
+  "version": "1.0.0",
+  "description": "hkust comp4021 term project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "url",
+    "shortener"
+  ],
+  "author": "SAD",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kitmak72/URL-shortener-comp4021"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-useragent": "^1.0.13",
+    "geoip-lite": "^1.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.7",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "shortid": "^2.2.15",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
+  }
+}
