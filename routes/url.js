@@ -12,7 +12,7 @@ const {
 //POST /api/url/
 router.post('/', retrieveUserFromToken, async (req, res) => {
   const { origin } = req.body;
-  const userID = req.user.id;
+  const userID = req.user ? req.user.id : null;
   const urlCode = req.body.urlCode || shortID.generate();
   const baseUrl = process.env.BASE_URL;
 

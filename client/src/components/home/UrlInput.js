@@ -17,7 +17,7 @@ function UrlInput() {
       const config = {
         headers: {
           'Content-type': 'application/json',
-          'x-auth-token': token
+          'x-auth-token': token || 'guest'
         }
       };
 
