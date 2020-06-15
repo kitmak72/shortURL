@@ -4,12 +4,14 @@ import axios from 'axios';
 import { GlobalContext } from '../../context/GlobalState';
 import Pagination from '../common/Pagination';
 import UrlTable from './UrlTable';
+import AddUrlModal from './AddUrlModal';
 
 function Dashboard() {
   const { token } = useContext(GlobalContext);
   const [urls, setUrls] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -37,6 +39,11 @@ function Dashboard() {
     return () => source.cancel();
   }, [page, total]);
 
+  function addURL(url) {
+    setUrls([url, ...urls]);
+    setTotal(total + 1);
+  }
+
   function deleteURL(urlCode) {
     const config = {
       headers: {
@@ -54,13 +61,27 @@ function Dashboard() {
   }
 
   return (
-    <div className="container">
-      <h2>
-        <CountUp end={total} prefix="Total " />
-      </h2>
-      <UrlTable urls={urls} deleteURL={deleteURL} />
-      <Pagination total={total} currentPage={page} setPage={setPage} />
-    </div>
+    <>
+      <div className="container">
+        <h2>
+          <CountUp end={total} prefix="Total " />
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => setModalIsOpen(true)}
+          >
+            &#43;
+          </button>
+        </h2>
+        <UrlTable urls={urls} deleteURL={deleteURL} />
+        <Pagination total={total} currentPage={page} setPage={setPage} />
+      </div>
+      <AddUrlModal
+        isOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        addURL={addURL}
+      />
+    </>
   );
 }
 

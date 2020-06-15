@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 function retrieveUserFromToken(req, res, next) {
   const token = req.header('x-auth-token');
 
-  if (token == 'guest') {
+  if (token === 'guest') {
     return next();
   }
 
