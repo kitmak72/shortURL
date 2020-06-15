@@ -56,7 +56,9 @@ function AddUrlModal({ isOpen, setModalIsOpen, addURL }) {
 
       <div className="input-group mb-3">
         <div className="input-group-prepend">
-          <span className="input-group-text">&#128279;</span>
+          <span className="input-group-text" role="img" aria-label="link">
+            &#128279;
+          </span>
         </div>
         <input
           type="url"

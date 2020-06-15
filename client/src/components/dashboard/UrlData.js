@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+
+const codeStyle = {
+  cursor: 'pointer'
+};
 
 function UrlData({ url, deleteURL }) {
+  const [tooltip, setTooltip] = useState('Copy link');
+  const timeoutID = useRef(0);
+
+  const copyToClipBoard = data => {
+    navigator.clipboard.writeText(data).then(
+      () => {
+        clearTimeout(timeoutID.current);
+        setTooltip('Copied');
+        timeoutID.current = setTimeout(() => setTooltip('Copy Link'), 1000);
+      },
+      () => console.log('copy fail')
+    );
+  };
+
   return (
     <tr>
-      <th scope="row">{url.urlCode}</th>
+      <th scope="row">
+        <Tippy content={tooltip} delay={500}>
+          <span onClick={() => copyToClipBoard(url.short)} style={codeStyle}>
+            {url.urlCode}
+          </span>
+        </Tippy>
+      </th>
       <td>
         <a href={url.origin}>{url.origin}</a>
       </td>
